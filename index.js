@@ -23,14 +23,22 @@ const secret = "mysecret";
 let conn = null;
 
 // function init connection mysql
-const initMySQL = async () => {
-  conn = await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "tutorial",
-  });
-};
+// const initMySQL = async () => {
+//   conn = await mysql.createConnection({
+//     host: "127.0.0.1",
+//     user: "root",
+//     password: "root",
+//     database: "tutorial",
+//     port: "3306"
+//   });
+// };
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'tutorial'
+})
 
 
 // อันนี้ลองregister

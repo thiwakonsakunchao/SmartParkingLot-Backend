@@ -1,5 +1,18 @@
 version: '3' 
 services:
+  app:
+    container_name: app
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: tutorial
+    depends_on:
+      - db
+
   db:
     image: mysql:latest
     container_name: db
@@ -10,6 +23,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data_test:/var/lib/mysql  
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
